@@ -1,4 +1,4 @@
-# Intelligent Cloud-Based Log Analyzer
+#Cloud-Based Log Analyzer
 
 A lightweight SIEM-inspired cloud log analysis system built using Flask, AWS, and Machine Learning.
 
