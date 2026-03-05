@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 import json
 from pathlib import Path
+from s3_upload import upload_auth_logs
 
 app = Flask(__name__)
 
@@ -47,6 +48,7 @@ def login():
 
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(json.dumps(log_record) + "\n")
+    upload_auth_logs()    
 
     if status == "success":
         message = f"Login successful for {username}."

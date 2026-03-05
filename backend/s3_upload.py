@@ -13,7 +13,7 @@ LOGS_DIR = BASE_DIR / "logs"
 # Load environment variables from .env (if present)
 load_dotenv(BASE_DIR / ".env")
 
-AWS_REGION = os.getenv("AWS_REGION", "ap-south-1")
+AWS_REGION = os.getenv("AWS_REGION", "us-east-1")
 S3_BUCKET = os.getenv("S3_BUCKET_NAME")
 
 
@@ -22,7 +22,7 @@ def get_s3_client():
     return boto3.client("s3", region_name=AWS_REGION)
 
 
-def build_s3_key(prefix: str = "auth-logs") -> str:
+def build_s3_key(prefix: str = "raw-logs/auth") -> str:
     """Generate an S3 object key using date-based folders."""
     now = datetime.utcnow()
     date_prefix = now.strftime("%Y/%m/%d")
